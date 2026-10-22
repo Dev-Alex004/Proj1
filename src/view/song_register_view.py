@@ -15,6 +15,32 @@ class SongRegisterView:
 
         return new_song_informations
 
+    def registre_song_success(self, controller_response) -> None:
+        self.__clear()
+        
+        message = '''
+            Musica Cadastrada com Sucesso!
+
+            * Titulo: {}
+            * Quantidade: {}
+        ''' .format(
+        controller_response["attributes"]["title"],
+        controller_response["count"]
+        )
+        print (message)
+
+    def registry_song_fail(self,controller_response: dict) -> None:
+        self.__clear()
+        
+        message = '''
+            Falha ao Registrar musica.
+
+            * Erro: {}
+
+        '''.format(
+        controller_response["error"]
+        )
+        print (message)
+
     def __clear(self):
         os.system("cls||clear")
-    

@@ -7,7 +7,7 @@ class SongRegisterControler:
             self.__insert_song(new_song_informations)
             return self.__format_response(new_song_informations)
         except Exception as exception:
-            return self.__format_response(exception)
+            return self.__format_error_response(exception)
 
     def __verify_song_infos(self, new_song_informations: dict) -> None:
         if len(new_song_informations["title"]) > 100:
@@ -27,7 +27,7 @@ class SongRegisterControler:
 
     def __format_response(self, new_song_informations: dict) ->dict:
         return{
-            "succes": True,
+            "success": True,
             "count": 1,
             "attributes":{
                 "title": new_song_informations["title"]
@@ -36,7 +36,7 @@ class SongRegisterControler:
 
     def __format_error_response(self, err: Exception) -> dict:
        return{
-            "succes": False,
+            "success": False,
             "error": str(err)
         } 
     
